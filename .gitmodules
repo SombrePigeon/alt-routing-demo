@@ -1,0 +1,3 @@
+[submodule "src/html/js/modules/alt-routing"]
+	path = src/html/js/modules/alt-routing
+	url = https://github.com/SombrePigeon/alt-routing.git
