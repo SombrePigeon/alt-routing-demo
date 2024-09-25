@@ -1,36 +1,58 @@
-version: '3.7'
-
 services:
     web:
         profiles: [none]
         build: .
-        environment:
-            - VIRTUAL_HOST=alt-routing-demo.sombrepigeon.fr
-            - ENV LETSENCRYPT_HOST=alt-routing-demo.sombrepigeon.fr
-        develop:
-            watch:
-                - 
-                    action: sync
-                    path: ./src/html
-                    target: /usr/local/apache2/htdocs/
         networks:
             nginxproxygitdeploy_net-proxy:
-                aliases: [web]
+                aliases: [alt-routing-demo.sombrepigeon.fr]
 
     webprod:
         extends: web
         profiles: [prod]
         environment:
             - VIRTUAL_HOST=alt-routing-demo.sombrepigeon.fr
-            - ENV LETSENCRYPT_HOST=alt-routing-demo.sombrepigeon.fr
+            - LETSENCRYPT_HOST=alt-routing-demo.sombrepigeon.fr
 
     webdev:
         extends: web
         profiles: [dev]
         environment:
             - VIRTUAL_HOST=alt-routing-demo.sombrepigeon.fr.localhost
-            - ENV LETSENCRYPT_HOST=alt-routing-demo.sombrepigeon.fr.localhost
-
+            - LETSENCRYPT_HOST=alt-routing-demo.sombrepigeon.fr.localhost
+        develop:
+            watch:
+                - 
+                    action: sync
+                    path: ./src/
+                    target: /usr/local/apache2/htdocs/
+                    ignore:
+                        - ./**/content.html
+                        - ./**/index.html
+                - 
+                    action: rebuild
+                    path: ./src/
+                    ignore:
+                        - ./**/index.html
+                        - ./**/nav.html
+                        - ./**/route.html
+                        - ./**/style.css
+    firefox:
+        image: jlesage/firefox
+        profiles: [devFirefox]
+        ports: 
+            - 5800:5800
+        environment:
+            - DARK_MODE=1
+            - FF_OPEN_URL=alt-routing-demo.sombrepigeon.fr
+        configs:
+            -   source: firefoxSecureContexts
+                target: /config/profile/user.js
+        networks:
+            nginxproxygitdeploy_net-proxy:
 networks:
     nginxproxygitdeploy_net-proxy:
         external: true
+
+configs:
+    firefoxSecureContexts:
+        content: user_pref("dom.securecontext.allowlist", "alt-routing-demo.sombrepigeon.fr");
