@@ -28,13 +28,13 @@ services:
                     ignore:
                         - ./**/content.html
                         - ./**/index.html
+                        - ./**/nav.html
+                        - ./**/route.html
                 - 
                     action: rebuild
                     path: ./src/
                     ignore:
                         - ./**/index.html
-                        - ./**/nav.html
-                        - ./**/route.html
                         - ./**/style.css
     firefox:
         image: jlesage/firefox
