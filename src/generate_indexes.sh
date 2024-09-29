@@ -18,11 +18,10 @@ replace_patterns() {
     local dir=$1
 
     for file in "$dir"/*.html; do
-        if [[ -f "$file" && "$file" != *"$OUTPUT" ]]; then
+        if [[ -f "$file" && "$file" != *"$OUTPUT_FILE" ]]; then
             filename=$(basename "$file")
-            echo $file
             file_content=$(awk '{printf "%s", $0}' "$file" )
-            index=$(echo "$template_content" | awk -v pattern="${filename}" -v content="$file_content" '{gsub("\\${" pattern "}", content)}1')
+            index=$(echo "$index" | awk -v pattern="${filename}" -v content="$file_content" '{gsub("\\${" pattern "}", content)}1')
         fi
     done
 
