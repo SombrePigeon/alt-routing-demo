@@ -8,27 +8,14 @@
       <link rel="stylesheet" href="/css/noScript.css"/>
     </noscript>
     <script type="importmap">
-      {
-        "imports":
-        {
-          "modules/": "/js/modules/",
-          "configs/": "/js/configs/"
-        },
-        "scopes":
-        {
-          "/js/modules/alt-routing/":
-          {
-            "/js/modules/alt-routing/config.js": "/js/configs/alt-routing.js"
-          }
-        }
-      }
+      $${importmap.json}
     </script>    
     <script type="module" src="/js/main.js"></script>
   </head>
   <body>
-    <header>Alt-routing</header>
+    <header>Alt-routing2</header>
     <nav><a href="/" >restart</a></nav>
-    <main is="alt-router">
+    <main is="alt-router">ttt
       ${nav.html}
       ${content.html}
     </main>

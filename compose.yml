@@ -21,21 +21,9 @@ services:
             - LETSENCRYPT_HOST=alt-routing-demo.sombrepigeon.fr.localhost
         develop:
             watch:
-                - 
-                    action: sync
-                    path: ./src/
-                    target: /usr/local/apache2/htdocs/
-                    ignore:
-                        - ./**/content.html
-                        - ./**/index.html
-                        - ./**/nav.html
-                        - ./**/route.html
-                - 
+                -
                     action: rebuild
                     path: ./src/
-                    ignore:
-                        - ./**/index.html
-                        - ./**/style.css
     firefox:
         image: jlesage/firefox
         profiles: [devFirefox]
