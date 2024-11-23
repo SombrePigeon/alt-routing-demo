@@ -1,20 +1,19 @@
 services:
-    web:
+    alt-routing-demo.base:
         profiles: [none]
         build: .
         networks:
-            nginxproxygitdeploy_net-proxy:
+            proxy:
                 aliases: [alt-routing-demo.sombrepigeon.fr]
-
-    webprod:
-        extends: web
+    alt-routing-demo:
+        extends: alt-routing-demo.base
         profiles: [prod]
         environment:
             - VIRTUAL_HOST=alt-routing-demo.sombrepigeon.fr
             - LETSENCRYPT_HOST=alt-routing-demo.sombrepigeon.fr
 
-    webdev:
-        extends: web
+    alt-routing-demo.dev:
+        extends: alt-routing-demo.base
         profiles: [dev]
         environment:
             - VIRTUAL_HOST=alt-routing-demo.sombrepigeon.fr.localhost
@@ -24,23 +23,27 @@ services:
                 -
                     action: rebuild
                     path: ./src/
-    firefox:
+
+    alt-routing-demo.firefox:
         image: jlesage/firefox
-        profiles: [devFirefox]
+        profiles: [dev]
         ports: 
             - 5800:5800
         environment:
+            - VIRTUAL_HOST=firefox.alt-routing-demo.localhost
+            - VIRTUAL_PORT=5800
             - DARK_MODE=1
             - FF_OPEN_URL=alt-routing-demo.sombrepigeon.fr
         configs:
-            -   source: firefoxSecureContexts
+            -   source: alt-routing-demo.firefox.userPref
                 target: /config/profile/user.js
         networks:
-            nginxproxygitdeploy_net-proxy:
-networks:
-    nginxproxygitdeploy_net-proxy:
-        external: true
+            proxy:
 
 configs:
-    firefoxSecureContexts:
-        content: user_pref("dom.securecontext.allowlist", "alt-routing-demo.sombrepigeon.fr");
+    alt-routing-demo.firefox.userPref:
+        content: user_pref("dom.securecontext.allowlist", 
+                "alt-routing-demo.sombrepigeon.fr,
+                alt-routing.dev.releases.sombrepigeon.fr");
+            user_pref("devtools.toolbox.host", "right");
+            user_pref("devtools.toolbox.previousHost", "right");
