@@ -1,7 +1,9 @@
 services:
     alt-routing-demo.base:
         profiles: [none]
-        build: .
+        build: 
+            context: .
+            dockerfile: Containerfile #compatibility :/
         networks:
             proxy:
                 aliases: [alt-routing-demo.sombrepigeon.fr]
