@@ -2,13 +2,8 @@
     "imports":
     {
       "modules/": "/js/modules/",
-      "configs/": "/js/configs/"
-    },
-    "scopes":
-    {
-      "/js/modules/alt-routing/":
-      {
-        "/js/modules/alt-routing/config.js": "/js/configs/alt-routing.js"
-      }
+      "configs/": "/js/configs/",
+      "alt-routing/": "http://alt-routing.dev.releases.sombrepigeon.fr/",
+      "alt-routing/config": "/js/configs/alt-routing.js"
     }
   }
