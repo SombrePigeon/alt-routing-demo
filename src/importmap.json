@@ -3,7 +3,7 @@
     {
       "modules/": "/js/modules/",
       "configs/": "/js/configs/",
-      "alt-routing/": "http://alt-routing.dev.releases.sombrepigeon.fr/",
+      "alt-routing/": "https://alt-routing.releases.sombrepigeon.fr/0.1/",
       "alt-routing/config": "/js/configs/alt-routing.js"
     }
   }
