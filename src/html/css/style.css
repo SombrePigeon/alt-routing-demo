@@ -67,7 +67,7 @@ nav
     grid-auto-rows: min-content;
     padding: 1em;
     gap: 1em;
-    overflow-y: scroll;
+    overflow-y: auto;
     container-type: inline-size;
 }
 
