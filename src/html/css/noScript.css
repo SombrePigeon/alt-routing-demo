@@ -1,5 +1,4 @@
-:target,
-[data-target]
+:target
 {
     border: 2px solid black;
 }

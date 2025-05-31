@@ -1,3 +1,5 @@
+@import "./route.css";
+
 /*nofouc*/
 body>* { visibility:initial }
 
@@ -38,7 +40,7 @@ html, body
 body
 {
     color: var(--color-theme-4);
-    font-size: 1.5em;
+    font-size: 1em;
     display: grid;
     grid-template-rows: min-content min-content 1fr min-content ;
 
@@ -91,6 +93,7 @@ alt-route
 
 main
 {
+    display: grid;
     background-color: var(--color-theme-1);
 }
 
@@ -102,6 +105,14 @@ footer
     box-shadow: 0px -1px 6px 0px rgba(0, 0, 0, 0.6);
 }
 
+
+@keyframes buttonShadowAnim
+{
+    
+}
+
+/*refacto*/
+
 a
 {
     background-color: var(--color-theme-3);
@@ -111,34 +122,30 @@ a
     box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.6);
     transition: box-shadow 0.15s ease-in-out;
     text-decoration: none;
+
+    &:hover
+    {
+        box-shadow: 1px 1px 6px 6px rgba(0, 0, 0, 0.6);
+    }
+    &,&:visited
+    {
+        color: var(--color-theme-1);
+    }
+    &[is=alt-a]
+    {
+        &:state(exact):not(.alt-target)
+        {
+            /*pointer-events: none;*/
+            filter: grayscale();
+        }
+        &:state(part):not(.alt-target)
+        {
+            text-decoration:underline;
+        }
+    }
 }
 
-a, a:visited
-{
-    color: var(--color-theme-1);
-}
-
-a:hover
-{
-    box-shadow: 1px 1px 6px 6px rgba(0, 0, 0, 0.6);
-}
-
-a[data-location-match=exact]:not([target])
-{
-    /*pointer-events: none;*/
-    filter: grayscale();
-}
-a[data-location-match=part]:not([target])
-{
-    text-decoration:underline;
-}
-@keyframes buttonShadowAnim
-{
-    
-}
-
-[data-target]
+.alt-target
 {
     border: 2px solid black;
 }
-  

@@ -1,3 +1,9 @@
-<div>
-    <slot></slot>
+<div class="nav">
+    <slot is="alt-slot" data-query="nav"></slot>
+</div>
+<div class="content">
+    <slot is="alt-slot" data-query=":not(nav):not(alt-route)"></slot>
+</div>
+<div class="routing">
+    <slot is="alt-slot" data-query="alt-route"></slot>
 </div>
