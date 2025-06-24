@@ -1,9 +1,35 @@
+
 services:
-    alt-routing-demo.base:
-        profiles: [none]
-        build: 
+    alt-routing-framework:
+        profiles: [none] 
+        build:
             context: .
-            dockerfile: Containerfile #compatibility :/
+            dockerfile_inline: FROM sombrepigeon/alt-routing-framework
+        develop:
+            watch:
+                -   
+                    action: sync
+                    path: ./src/
+                    target: /src/
+                    ignore: 
+                        - "*.html"
+                        - "**/*.html"
+                        - "importmap.json"
+                -   
+                    action: sync+exec
+                    path: ./src/
+                    target: /src/
+                    include: 
+                        - "*.html"
+                        - "**/*.html"
+                        - "importmap.json"
+                    ignore: 
+                        - "index.html"
+                        - "**/index.html"
+                    exec: 
+                        command: make -C /src/
+    alt-routing-demo.base:
+        extends: alt-routing-framework
         networks:
             proxy:
                 aliases: [alt-routing-demo.sombrepigeon.fr]
@@ -13,6 +39,9 @@ services:
         environment:
             - VIRTUAL_HOST=alt-routing-demo.sombrepigeon.fr
             - LETSENCRYPT_HOST=alt-routing-demo.sombrepigeon.fr
+        depends_on:
+            alt-routing:
+                condition: service_started
 
     alt-routing-demo.dev:
         extends: alt-routing-demo.base
@@ -20,11 +49,9 @@ services:
         environment:
             - VIRTUAL_HOST=alt-routing-demo.sombrepigeon.fr.localhost
             - LETSENCRYPT_HOST=alt-routing-demo.sombrepigeon.fr.localhost
-        develop:
-            watch:
-                -
-                    action: rebuild
-                    path: ./src/
+        depends_on:
+            alt-routing.dev:
+                condition: service_started
 
     alt-routing-demo.firefox:
         image: jlesage/firefox
