@@ -27,7 +27,7 @@ services:
                         - "index.html"
                         - "**/index.html"
                     exec: 
-                        command: make -C /src/
+                        command: make -C /src/ -f /alt-routing-framework/makefile
     alt-routing-demo.base:
         extends: alt-routing-framework
         networks:

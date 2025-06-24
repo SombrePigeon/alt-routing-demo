@@ -13,13 +13,13 @@
     </noscript>
     <script type="importmap">
       $${importmap.json}
-    </script>    
+    </script>
     <script type="module" src="/js/main.js"></script>
   </head>
   <body>
     <header>Alt-routing</header>
     <nav><a href="/" >restart</a></nav>
-    <main is="alt-router" data-shadow="true" data-style="true">
+    <main is="alt-router" data-path="/">
       ${nav.html}
       ${content.html}
     </main>
