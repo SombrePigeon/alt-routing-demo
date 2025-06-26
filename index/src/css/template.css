@@ -1,0 +1,89 @@
+:host
+{
+    display: grid;
+    grid-template-rows: [burger-start header-start] min-content 
+    [burger-end header-end nav-start main-start] 1fr 
+    [nav-end main-end footer-start] min-content 
+    [footer-end] ;
+    grid-template-columns: 
+    [burger-start nav-start footer-start main-start header-start] min-content
+    [burger-end  ] 1fr 
+    [header-end footer-end main-end] ;
+
+    button
+    {
+        grid-area: burger;
+        background-color: rgba(74, 222, 128, 0.1);
+        font-size: 2em;
+        border: 1px solid var(--color-accent);
+        border-radius: 5px;
+        backdrop-filter: blur(6px);
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        z-index: 1;
+
+
+        &:hover {
+            background-color: var(--gold);
+        }
+
+    }
+    .header
+    {
+        grid-area: header;
+    }
+    .footer
+    {
+        grid-area: footer;
+    }
+    .main
+    {
+        grid-area: main;
+    }
+    ::slotted(*:not(nav))
+    {
+        height: 100%;
+    }
+
+    .nav
+    {
+        background-color: var(--color-card);
+        box-sizing: border-box;
+        margin: 0;
+        border: 1px;
+        padding: 1em;
+        width: 60%;
+        height: 100%;
+
+        transition: translate 0.3s ease-out, display 0.3s ease-out allow-discrete,
+        overlay 0.3s ease-out allow-discrete;
+
+        &::backdrop 
+        {
+            opacity: 0;
+            background: rgba(0, 0, 0, 0.5);
+            transition: opacity 2s;
+        }
+        &:popover-open
+        {
+            &::backdrop 
+            {
+                opacity: 1;
+            }
+            @starting-style 
+            {
+                translate: -60% 0;
+                &::backdrop 
+                {
+                    opacity: 0;
+                }
+                
+            }   
+        }
+
+        h3
+        {
+            color: var(--color-text);
+            text-align: center;
+        }
+    }
+}

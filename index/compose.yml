@@ -1,0 +1,17 @@
+services:
+    alt-routing-demo:
+        build:
+            context: .
+            dockerfile: Containerfile
+        environment:
+            - VIRTUAL_HOST=alt-routing-demo.sombrepigeon.fr
+            - LETSENCRYPT_HOST=alt-routing-demo.sombrepigeon.fr
+        networks:
+            proxy:
+                aliases: [alt-routing-demo.sombrepigeon.fr]
+        develop:
+            watch:
+                -   
+                    action: sync
+                    path: ./src/
+                    target: /usr/local/apache2/htdocs/

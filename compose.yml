@@ -1,3 +1,6 @@
+include:
+    - path:
+        - index/compose.yml
 
 services:
     alt-routing-framework:
@@ -28,30 +31,17 @@ services:
                         - "**/index.html"
                     exec: 
                         command: make -C /src/ -f /alt-routing-framework/makefile
-    alt-routing-demo.base:
+    alt-routing-demo-old:
+        profiles: [dev, prod]
         extends: alt-routing-framework
+        build:
+            context: old
+        environment:
+            - VIRTUAL_HOST=old.alt-routing-demo.sombrepigeon.fr
+            - LETSENCRYPT_HOST=old.alt-routing-demo.sombrepigeon.fr
         networks:
             proxy:
-                aliases: [alt-routing-demo.sombrepigeon.fr]
-    alt-routing-demo:
-        extends: alt-routing-demo.base
-        profiles: [prod]
-        environment:
-            - VIRTUAL_HOST=alt-routing-demo.sombrepigeon.fr
-            - LETSENCRYPT_HOST=alt-routing-demo.sombrepigeon.fr
-        depends_on:
-            alt-routing:
-                condition: service_started
-
-    alt-routing-demo.dev:
-        extends: alt-routing-demo.base
-        profiles: [dev]
-        environment:
-            - VIRTUAL_HOST=alt-routing-demo.sombrepigeon.fr.localhost
-            - LETSENCRYPT_HOST=alt-routing-demo.sombrepigeon.fr.localhost
-        depends_on:
-            alt-routing.dev:
-                condition: service_started
+                aliases: [old.alt-routing-demo.sombrepigeon.fr]
 
     alt-routing-demo.firefox:
         image: jlesage/firefox
