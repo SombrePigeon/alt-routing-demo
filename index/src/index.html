@@ -32,9 +32,11 @@
         </button>
         <div class="header"><slot name="header">header</slot></div>
         <div class="nav" popover id="navPopover">
-            <button popovertarget="navPopover" popovertargetaction="hide">X</button>
-            <h3>Demos</h3>
-            <slot name="nav"></slot>
+            <div>
+                <button popovertarget="navPopover" popovertargetaction="hide">X</button>
+                <h3>Demos</h3>
+                <slot name="nav"></slot>
+            </div>
         </div>
         <div class="main"><slot name="main">main</slot></div>
         <div class="footer"><slot name="footer">footer</slot></div>

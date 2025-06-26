@@ -1,12 +1,12 @@
 :host
 {
     display: grid;
-    grid-template-rows: [burger-start header-start] min-content 
+    grid-template-rows: [burger-start header-start] 3.5em 
     [burger-end header-end nav-start main-start] 1fr 
     [nav-end main-end footer-start] min-content 
     [footer-end] ;
     grid-template-columns: 
-    [burger-start nav-start footer-start main-start header-start] min-content
+    [burger-start nav-start footer-start main-start header-start] 3.5em
     [burger-end  ] 1fr 
     [header-end footer-end main-end] ;
 
@@ -20,8 +20,6 @@
         backdrop-filter: blur(6px);
         transition: background-color 0.3s ease, transform 0.2s ease;
         z-index: 1;
-
-
         &:hover {
             background-color: var(--gold);
         }
@@ -46,14 +44,42 @@
 
     .nav
     {
+        
         background-color: var(--color-card);
         box-sizing: border-box;
         margin: 0;
         border: 1px;
-        padding: 1em;
-        width: fit-content;
+        padding: 1em;        
         height: 100%;
 
+        div
+        {
+            display: grid;
+            
+            grid-template-columns:  [close-start nav-start title-start]3em
+                                    [close-end]1fr
+                                    [nav-end title-end];
+
+            grid-template-rows:     [close-start]3em
+                                    [close-end title-start]max-content
+                                    [title-end nav-start] 1fr
+                                    [nav-end];
+            button
+            {
+                grid-area: close;
+            }
+            h3
+            {
+                grid-area: title;
+                color: var(--color-text);
+                text-align: center;
+            }
+            ::slotted(nav)
+            {
+                grid-area: nav;
+            }
+        }
+        translate: 0 0;
         transition: translate 0.3s ease-out, display 0.3s ease-out allow-discrete,
         overlay 0.3s ease-out allow-discrete;
 
@@ -80,10 +106,6 @@
             }   
         }
 
-        h3
-        {
-            color: var(--color-text);
-            text-align: center;
-        }
+        
     }
 }

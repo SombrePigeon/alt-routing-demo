@@ -29,7 +29,7 @@ body>* { visibility:initial }
     --fine-red:#df4655;
     --fine-green:#61d97c;
 
-    --gap:0.8em;
+    --gap:0.7em;
 
 }
 
@@ -74,6 +74,7 @@ nav
     display: grid;
     grid-template-columns: max-content;
     grid-auto-flow: row;
+    grid-auto-rows: min-content;
     padding: 2em;
 
     gap: 1em;
