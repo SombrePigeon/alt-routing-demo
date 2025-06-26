@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>alt routing demo</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+  </head>
+  <body>
+    
+    <header slot="header"><h1>Alt-routing demo</h1></header>
+    <nav slot="nav">
+        <a href="http://old.alt-routing-demo.sombrepigeon.fr" target="site">old test site</a>
+        <a href="http://old.alt-routing-demo.sombrepigeon.fr" target="site">Site de dev pour la v1 (legacy)</a>
+    </nav>
+    <main slot="main">
+        <section>
+            <h2>Les démos</h2>
+            <p>Navigez depuis le menu pour voir des demonstrations des fonctionalités de <em>alt-routing</em> </p>
+            <small>Ce site n'utilise pas <em>alt-routing</em> et me sert d'exercice à l'api <em>popover</em></small>
+        </section>
+        <section>
+            <iframe width="100%" height="100%" name="site"></iframe>
+        </section>
+    </main>
+    <footer slot="footer">made by : SombrePigeon</footer>
+
+    <template shadowrootmode="open">
+        <link rel="stylesheet" href="/css/template.css"/>
+
+        <button popovertarget="navPopover" popovertargetaction="show"> 
+            &#9776
+        </button>
+        <div class="header"><slot name="header">header</slot></div>
+        <div class="nav" popover id="navPopover">
+            <button popovertarget="navPopover" popovertargetaction="hide">X</button>
+            <h3>Demos</h3>
+            <slot name="nav"></slot>
+        </div>
+        <div class="main"><slot name="main">main</slot></div>
+        <div class="footer"><slot name="footer">footer</slot></div>
+        <script>
+            let popover = document.body.shadowRoot.getElementById("navPopover");
+            popover.addEventListener("click", function(e) {
+            if(e.target.tagName === "A")
+            {
+                popover.hidePopover();
+            }
+            });
+        </script>
+    </template>
+  </body>
+</html>

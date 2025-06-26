@@ -1,4 +1,2 @@
-.update
-
-hash.txt
 index.html
+!/index/**/index.html
