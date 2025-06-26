@@ -51,7 +51,7 @@
         margin: 0;
         border: 1px;
         padding: 1em;
-        width: 60%;
+        width: fit-content;
         height: 100%;
 
         transition: translate 0.3s ease-out, display 0.3s ease-out allow-discrete,
