@@ -79,7 +79,7 @@
                 grid-area: nav;
             }
         }
-        translate: 0 0;
+        translate: -100% 0;
         transition: translate 0.3s ease-out, display 0.3s ease-out allow-discrete,
         overlay 0.3s ease-out allow-discrete;
 
@@ -91,13 +91,14 @@
         }
         &:popover-open
         {
+            translate: none;
             &::backdrop 
             {
                 opacity: 1;
             }
             @starting-style 
             {
-                translate: -60% 0;
+                translate: -100% 0;
                 &::backdrop 
                 {
                     opacity: 0;
