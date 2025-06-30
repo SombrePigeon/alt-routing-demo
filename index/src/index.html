@@ -6,20 +6,39 @@
     <link rel="stylesheet" href="/css/style.css"/>
   </head>
   <body>
-    
     <header slot="header"><h1>Alt-routing demo</h1></header>
     <nav slot="nav">
-        <a href="https://old.alt-routing-demo.sombrepigeon.fr" target="site">old test site</a>
+        <a href="https://old.alt-routing-demo.sombrepigeon.fr" target="site">même lien qu'en dessous !</a>
         <a href="https://old.alt-routing-demo.sombrepigeon.fr" target="site">Site de dev pour la v1 (legacy)</a>
     </nav>
     <main slot="main">
         <section>
-            <h2>Les démos</h2>
             <p>Navigez depuis le menu pour voir des demonstrations des fonctionalités de <em>alt-routing</em> </p>
-            <small>Ce site n'utilise pas <em>alt-routing</em> et me sert d'exercice à l'api <em>popover</em></small>
+            <small>Ce site n'utilise pas <em>alt-routing</em> et me sert d'exercice à l'api <em>popover</em> mais çi-dessous sont injectés des sites qui l'utilisent</small>
         </section>
         <section>
-            <iframe width="100%" height="100%" name="site" srcdoc="içi s'affichera la démo après avoir clique sur un lien en navigation !"></iframe>
+            <iframe width="100%" height="100%" name="site" srcdoc="
+                <html>
+                    <head>
+                        <style>
+                        body {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            height: 100vh;
+                            margin: 0;
+                            color: gray;
+                            font-size: 1.5em;
+                            font-family: sans-serif;
+                            text-align: center;
+                        }
+                        </style>
+                    </head>
+                    <body>
+                        içi s'affichera la démo après avoir clique sur un lien en navigation !
+                    </body>
+                </html>">
+            </iframe>
         </section>
     </main>
     <footer slot="footer">made by : SombrePigeon</footer>

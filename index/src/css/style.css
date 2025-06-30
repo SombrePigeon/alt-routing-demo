@@ -124,14 +124,24 @@ section {
     padding: 1em;
 }
 
+html
+{
+    font-size: clamp(0.8rem, 2vmin, 2rem);
+}
+/*
 @media screen and (min-resolution: 100dpi) {
   html {
-    font-size: 1.7em;
+    font-size: 1.5rem;
   }
-}
+}*/
+
+
+
+/*
+
 
 @media screen and (max-resolution: 99dpi) {
   html {
     font-size: 1em;
   }
-}
+}*/
