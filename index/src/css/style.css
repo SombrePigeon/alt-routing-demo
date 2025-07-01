@@ -40,14 +40,9 @@ body>* { visibility:initial }
     border-color: var(--color-border);
 }
 
-html, body
-{
-    height: 100%;
-    margin: 0;
-}
-
 body
 {
+    height: 100vh;
     overflow: auto;
     background-color: var(--color-bg);
     color: var(--color-text);
