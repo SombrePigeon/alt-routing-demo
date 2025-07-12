@@ -1,0 +1,9 @@
+{
+    "imports":
+    {
+      "modules/": "/js/modules/",
+      "configs/": "/js/configs/",
+      "alt-routing/": "https://alt-routing.releases.sombrepigeon.fr/1.0.1/",
+      "alt-routing/config": "/js/configs/alt-routing.js"
+    }
+  }

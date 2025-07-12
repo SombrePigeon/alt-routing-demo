@@ -8,29 +8,7 @@ services:
         build:
             context: .
             dockerfile_inline: FROM sombrepigeon/alt-routing-framework
-        develop:
-            watch:
-                -   
-                    action: sync
-                    path: ./src/
-                    target: /src/
-                    ignore: 
-                        - "*.html"
-                        - "**/*.html"
-                        - "importmap.json"
-                -   
-                    action: sync+exec
-                    path: ./src/
-                    target: /src/
-                    include: 
-                        - "*.html"
-                        - "**/*.html"
-                        - "importmap.json"
-                    ignore: 
-                        - "index.html"
-                        - "**/index.html"
-                    exec: 
-                        command: make -C /src/ -f /alt-routing-framework/makefile
+
     alt-routing-demo-old:
         profiles: [dev, prod]
         extends: alt-routing-framework
@@ -42,12 +20,105 @@ services:
         networks:
             proxy:
                 aliases: [old.alt-routing-demo.sombrepigeon.fr]
+        develop:
+            watch:
+                -   
+                    action: sync
+                    path: ./old/src/
+                    target: /src/
+                    ignore: 
+                        - "*.html"
+                        - "**/*.html"
+                        - "importmap.json"
+                -   
+                    action: sync+exec
+                    path: ./old/src/
+                    target: /src/
+                    include: 
+                        - "*.html"
+                        - "**/*.html"
+                        - "importmap.json"
+                    ignore: 
+                        - "index.html"
+                        - "**/index.html"
+                    exec: 
+                        command: make -C /src/ -f /alt-routing-framework/makefile
+
+    alt-routing-demo-basic:
+        profiles: [dev, prod]
+        extends: alt-routing-framework
+        build:
+            context: basic
+        environment:
+            - VIRTUAL_HOST=basic.alt-routing-demo.sombrepigeon.fr
+            - LETSENCRYPT_HOST=basic.alt-routing-demo.sombrepigeon.fr
+        networks:
+            proxy:
+                aliases: [basic.alt-routing-demo.sombrepigeon.fr]
+        develop:
+            watch:
+                -   
+                    action: sync
+                    path: ./basic/src/
+                    target: /src/
+                    ignore: 
+                        - "*.html"
+                        - "**/*.html"
+                        - "importmap.json"
+                -   
+                    action: sync+exec
+                    path: ./basic/src/
+                    target: /src/
+                    include: 
+                        - "*.html"
+                        - "**/*.html"
+                        - "importmap.json"
+                    ignore: 
+                        - "index.html"
+                        - "**/index.html"
+                    exec: 
+                        command: make -C /src/ -f /alt-routing-framework/makefile
+                        
+    alt-routing-demo-spellbook:
+        profiles: [dev, prod]
+        extends: alt-routing-framework
+        build:
+            context: spellbook
+        ports: 
+            - 8000:80
+        environment:
+            - VIRTUAL_HOST=spellbook.alt-routing-demo.sombrepigeon.fr
+            - LETSENCRYPT_HOST=spellbook.alt-routing-demo.sombrepigeon.fr
+        networks:
+            proxy:
+                aliases: [spellbook.alt-routing-demo.sombrepigeon.fr]
+        develop:
+            watch:
+                -   
+                    action: sync
+                    path: ./spellbook/src/
+                    target: /src/
+                    ignore: 
+                        - "*.html"
+                        - "**/*.html"
+                        - "importmap.json"
+                -   
+                    action: sync+exec
+                    path: ./spellbook/src/
+                    target: /src/
+                    include: 
+                        - "*.html"
+                        - "**/*.html"
+                        - "importmap.json"
+                    ignore: 
+                        - "index.html"
+                        - "**/index.html"
+                    exec: 
+                        command: make -C /src/ -f /alt-routing-framework/makefile
 
     alt-routing-demo.firefox:
         image: jlesage/firefox
         profiles: [dev]
-        ports: 
-            - 5800:5800
         environment:
             - VIRTUAL_HOST=firefox.alt-routing-demo.localhost
             - VIRTUAL_PORT=5800
@@ -63,6 +134,8 @@ configs:
     alt-routing-demo.firefox.userPref:
         content: user_pref("dom.securecontext.allowlist", 
                 "alt-routing-demo.sombrepigeon.fr,
-                alt-routing.dev.releases.sombrepigeon.fr");
+                alt-routing.dev.releases.sombrepigeon.fr,
+                spellbook.alt-routing-demo.sombrepigeon.fr");
             user_pref("devtools.toolbox.host", "right");
             user_pref("devtools.toolbox.previousHost", "right");
+            user_pref("dom.serviceWorkers.testing.enabled", true);

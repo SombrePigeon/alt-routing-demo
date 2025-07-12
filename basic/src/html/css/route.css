@@ -1,0 +1,12 @@
+alt-route
+{
+    border: 0.2em ridge gray;
+    &:state(part)
+    {
+      border-color: red;
+    }
+    &:state(exact)
+    {
+      border-color: blue;
+    }
+}
