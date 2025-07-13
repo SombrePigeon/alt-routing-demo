@@ -149,3 +149,22 @@ a
 {
     border: 2px solid black;
 }
+
+alt-route[data-path="/"] a.feature::before
+{
+    content: "F : ";
+}
+
+alt-route[data-path="/"] a.cantrip::before
+{
+    content: "C : ";
+}
+alt-route[data-path="/"] a.lv1::before
+{
+    content: "lv1 : ";
+}
+
+alt-route[data-path="/"] a.lv2::before
+{
+    content: "lv2 : ";
+}
