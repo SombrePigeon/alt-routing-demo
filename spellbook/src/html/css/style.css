@@ -3,27 +3,46 @@
 /*nofouc*/
 body>* { visibility:initial }
 
-@media (prefers-color-scheme: light)
+:root
 {
-    :root
-    {
-        --color-theme-1:#FCF8EC;
-        --color-theme-2:#D0E8F2;
-        --color-theme-3:#79A3B1;
-        --color-theme-4:#456268;
-    }
+    --color-theme-1:#382933;
+    --color-theme-2:#3B5249;
+    --color-theme-3:#519872;
+    --color-theme-4:#A4B494;
+
+    --color-bg: #1c1e1f; 
+    --color-banner: #151617;
+    --color-border:#726a5d;
+    --color-border-dark:#0f1011;
+    --color-text: #e8e6e3;
+    --color-text-secondary: #606060;
+  
+    --color-link: #67b5fe;
+    --color-link-visited:#3a90df;
+
+    --color-line:#007bff;
+
+    --color-card:#242729;
+    --color-card-2: #1d1f20;
+
+    --violet-rose: #5d3d8b;
+    --gold:#ffc677;
+    --orange:#ee864e;
+    --orange2:#fd7e14;
+    --deep-blue:#003cc7;
+
+    --fine-red:#df4655;
+    --fine-green:#61d97c;
+
+    --gap:0.7em;
+
 }
 
-@media (prefers-color-scheme: dark)
+html
 {
-    :root
-    {
-        --color-theme-1:#382933;
-        --color-theme-2:#3B5249;
-        --color-theme-3:#519872;
-        --color-theme-4:#A4B494;
-    }
+    font-size: clamp(0.8rem, 2vmin, 2rem);
 }
+
 
 *
 {
@@ -42,7 +61,7 @@ body
     color: var(--color-theme-4);
     font-size: 1em;
     display: grid;
-    grid-template-rows: min-content min-content 1fr min-content ;
+    grid-template-rows: min-content 1fr min-content ;
 
 }
 
@@ -153,6 +172,10 @@ a
 alt-route[data-path="/"] a.feature::before
 {
     content: "F : ";
+}
+alt-route[data-path="/"] a.race::before
+{
+    content: "R : ";
 }
 
 alt-route[data-path="/"] a.cantrip::before
