@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title is="alt-title">${title.html}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
       body { background-color: #382933 }
       body>* { visibility: hidden }
@@ -17,7 +18,7 @@
     <script type="module" src="/js/main.js"></script>
   </head>
   <body>
-    <header>Alt-routing</header>
+    <header>SpellBook</header>
     <main is="alt-router" data-path="/">
       ${nav.html}
       ${content.html}

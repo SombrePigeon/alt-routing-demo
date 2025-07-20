@@ -37,12 +37,12 @@ body>* { visibility:initial }
     --gap:0.7em;
 
 }
-
+/*
 html
 {
     font-size: clamp(0.8rem, 2vmin, 2rem);
 }
-
+*/
 
 *
 {
