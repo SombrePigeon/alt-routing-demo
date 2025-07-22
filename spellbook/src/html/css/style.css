@@ -48,7 +48,7 @@ body>* { visibility:initial }
 /*base*/
 html,body
 {
-    height: 100vh;
+    height: 100%;
 }
 
 body
@@ -102,7 +102,7 @@ nav
     grid-template-columns: repeat(12,1fr);
     grid-auto-rows: min-content;
     padding: 1em;
-    gap: 1em;
+    gap: var(--gap);
     container-name: douze;
     container-type: inline-size;
 }
@@ -113,35 +113,35 @@ nav
         grid-column: span 1;
     }
 }
-@container (width < 124em)
+@container douze (width < 124em)
 {
     a
     {
         grid-column: span 2;
     }
 }
-@container (width < 83em)
+@container douze (width < 83em)
 {
     a
     {
         grid-column: span 3;
     }
 }
-@container (width < 62em)
+@container douze (width < 62em)
 {
     a
     {
         grid-column: span 4;
     }
 }
-@container (width < 41em)
+@container douze (width < 41em)
 {
     a
     {
         grid-column: span 6;
     }
 }
-@container (width < 20em)
+@container douze (width < 20em)
 {
     a
     {

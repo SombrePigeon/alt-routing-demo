@@ -11,4 +11,9 @@ alt-route
     {
       border-color: blue;
     }
+    &:state(none)
+    {
+      display: none;
+    }
+
 }

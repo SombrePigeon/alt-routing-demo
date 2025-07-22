@@ -1,3 +1,7 @@
+//import "./dice/service.js";
+importScripts('./dice/service.js');
+
+
 self.addEventListener('install', (event) => {
   console.log('[SW] Install');
   self.skipWaiting(); // ⚠️ force l'activation sans attendre
@@ -8,6 +12,7 @@ self.addEventListener('activate', (event) => {
   self.clients.claim(); // ⚠️ prend le contrôle immédiat des pages ouvertes
 });
 
+//spells
 self.addEventListener("fetch", (event) => {
   // Let the browser do its default thing
   // for non-GET requests.
