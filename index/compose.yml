@@ -1,5 +1,6 @@
 services:
     alt-routing-demo:
+        profiles: [dev, prod]
         build:
             context: .
             dockerfile: Containerfile
