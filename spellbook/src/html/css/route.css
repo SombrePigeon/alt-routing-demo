@@ -15,5 +15,16 @@ alt-route
     {
       display: none;
     }
+    &[popover]
+    {
+      display: none;
+      width: 80%;
+      height: 80%;
+      margin: auto;
+    }
+    &[popover]:popover-open
+    {
+      display: grid;
+    }
 
 }
