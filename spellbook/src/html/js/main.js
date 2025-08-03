@@ -20,7 +20,7 @@ import "alt-routing/config";
 console.log("main");
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js', { type: "module", scope: "/"}).then(reg => {
+  navigator.serviceWorker.register('/sw.js', { /*type: "module",*/ scope: "/"}).then(reg => {
     console.log("SW registered", reg);
   }).catch(err => {
     console.error("SW registration failed", err);
