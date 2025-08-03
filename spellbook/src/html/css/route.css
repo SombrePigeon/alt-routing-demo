@@ -21,6 +21,8 @@ alt-route
       width: 80%;
       height: 80%;
       margin: auto;
+      background-color: var(--color-bg);
+      color: var(--color-text);
     }
     &[popover]:popover-open
     {
