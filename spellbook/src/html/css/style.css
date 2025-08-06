@@ -43,7 +43,6 @@ body>* { visibility:initial }
 {
     box-sizing: border-box;
     margin: 0;
-    overflow: hidden;
 }
 /*base*/
 html,body
@@ -155,9 +154,9 @@ nav
 a
 {
     border-radius: 1px;
-    border-style:ridge;
-    border-color: var(--color-link);
-    border-width: 1px;
+    outline-style:ridge;
+    outline-color: var(--color-link);
+    outline-width: 1px;
 
     /*padding: 1em;*/
     text-align: center;

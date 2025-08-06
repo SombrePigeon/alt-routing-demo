@@ -1,3 +1,5 @@
+//polyfills
+import "polyfills/custom-elements";
 //alt-routing submodules
 import "alt-routing/features/shadow.js";
 import "alt-routing/features/style.js";

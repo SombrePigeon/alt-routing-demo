@@ -17,5 +17,5 @@ newConfig.routeur.features.shadowRouting = true;
 newConfig.routeur.features.styleShadowRouting = true;
 newConfig.routeur.features.updateTarget = true;
 newConfig.route.shadowRootInit.slotAssignment = "manual";
-newConfig.route.navSelector= ":scope>:is(nav,a,form)"
+newConfig.route.navSelector= ":scope>:is(nav,a)"
 export default newConfig;
