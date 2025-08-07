@@ -10,6 +10,7 @@ import "alt-routing/anchor.js";
 import "alt-routing/router.js";
 import "alt-routing/title.js";
 import "alt-routing/slot.js";
+import "alt-routing/form.js";
 //import "alt-routing/source.js";
 
 //import "alt-routing/source.js";
