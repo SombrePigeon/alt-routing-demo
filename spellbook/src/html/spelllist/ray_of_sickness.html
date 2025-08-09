@@ -1,18 +1,38 @@
-<h3>Ray of sickness</h3>
-<pre>
-1st-level necromancy
+<h3 class="nom">Rayon empoisonné</h3>
 
-Casting Time: 1 action
-Range: 60 feet
-Components: V, S
-Duration: Instantaneous
-</pre>
-<p>
+<data class="niveau" value="1">niveau 1</data>
+<data class="ecole" value="necromancie">nécromancie</data>
+<data class="incantation" value="1action"><b>Temps d'incantation</b> : 1 action</data>
+<data class="portee" value="18m"><b>Portée</b> : 18m</data>
+<data class="composants" value="V,S"><b>Composantes</b> : V, S</data>
+<data class="duree" value="instantanee"><b>Durée</b> : instantanée</data>
 
 
-A ray of sickening greenish energy lashes out toward a creature within range. Make a ranged spell attack against the target. On a hit, the target takes <a is="alt-a" href="/dice/?dice=2d8">2d8</a> poison damage and must make a Constitution saving throw. On a failed save, it is also poisoned until the end of your next turn.
-
+<p class="description">
+Un rayon d'énergie verdâtre et contagieuse est envoyé en direction d'une créature à portée. <br />
+Effectuez une attaque à distance avec un sort contre la cible. Si le coup touche, 
+la cible subit <a is="alt-a" href="/dice/?dice=2d8">2d8</a> dégâts de poison et doit effectuer un jet de sauvegarde de Constitution. <br />
+En cas d'échec, la cible est empoisonnée jusqu'à la fin de votre prochain tour.
 </p>
-<p>
-At Higher Levels. When you cast this spell using a spell slot of 2nd level or higher, the damage increases by <a is="alt-a" href="/dice/?dice=1d8">1d8</a> for each slot level above 1st.
+<p class="augmentation">
+<b>Aux niveaux supérieurs</b>. 
+Si vous lancez ce sort en utilisant un emplacement de sort de niveau 2 ou supérieur, 
+les dégâts augmentent de <a is="alt-a" href="/dice/?dice=1d8">1d8</a> pour chaque niveau d'emplacement au-delà du niveau 1.
 </p>
+
+<form class="augmentation" is="alt-form" action="/dice/">
+    <label>cast at level : 
+        <select name="dice">
+            <option value="2d8">lv1</option>
+            <option value="3d8">lv2</option>
+            <option value="4d8">lv3</option>
+            <option value="5d8">lv4</option>
+            <option value="6d8">lv5</option>
+            <option value="7d8">lv6</option>
+            <option value="8d8">lv7</option>
+            <option value="9d8">lv8</option>
+            <option value="10d8">lv9</option>
+        </select>
+    </label>
+    <button>cast spell</button>
+</form>

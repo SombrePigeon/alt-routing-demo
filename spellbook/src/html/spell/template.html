@@ -2,14 +2,12 @@
     <slot is="alt-slot" data-query="nav"></slot>
 </div>
 <div class="content">
-    <div><slot is="alt-slot" data-query="h3">nom du sort</slot></div>
-    <div><span><slot is="alt-slot" data-query="data[value$=':lvl']">niveau</slot></span> - <span><slot is="alt-slot" data-query="data[value$=':school']">ecole</slot></span></div>
-    <div><slot is="alt-slot" data-query="data[value$=':action']">temps d'incantation</slot></div>
-    <div><slot is="alt-slot" data-query="data[value$=':m']">portées</slot></div>
-    <div><slot is="alt-slot" data-query="data[value$=':components']">composants</slot></div>
-    <div><slot is="alt-slot" data-query="data[value$=':s']">durée</slot></div>
-    <div><slot is="alt-slot" data-query="p">description</slot></div>
-    <div><slot is="alt-slot" data-query="form">heightenning</slot></div>
-    
-    
+    <div><slot is="alt-slot" data-query=".nom">nom du sort</slot></div>
+    <div><span><slot is="alt-slot" data-query=".niveau">niveau</slot></span> - <span><slot is="alt-slot" data-query=".ecole">ecole</slot></span></div>
+    <div><slot is="alt-slot" data-query=".incantation">temps d'incantation</slot></div>
+    <div><slot is="alt-slot" data-query=".portee">portée</slot></div>
+    <div><slot is="alt-slot" data-query=".composants">composants</slot></div>
+    <div><slot is="alt-slot" data-query=".duree">durée</slot></div>
+    <div><slot is="alt-slot" data-query=".description">description</slot></div>
+    <div><slot is="alt-slot" data-query=".augmentation">heightenning</slot></div>
 </div>

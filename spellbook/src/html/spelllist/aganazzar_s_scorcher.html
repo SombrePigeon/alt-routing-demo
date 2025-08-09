@@ -1,24 +1,23 @@
-<h3>Flambée d'Aganazzar</h3>
-<data value="2:lvl">niveau 2</data>
-<data value="evocation:school">évocation</data>
+<h3 class="nom">Flambée d'Aganazzar</h3>
+<data class="niveau" value="2">niveau 2</data>
+<data class="ecole" value="evocation">évocation</data>
+<data class="incantation" value="1action"><b>Temps d'incantation</b> : 1 action</data>
+<data class="portee" value="9m"><b>Portée</b> : 9m</data>
+<data class="composants" value="V,S,M(une écaille de dragon rouge)"><b>Composantes</b> : V, S, M (une écaille de dragon rouge)</data>
+<data class="duree" value="instantanee"><b>Durée</b> : instantanée</data>
 
-<data value="1:action"><b>Temps d'incantation</b> : 1 action</data>
-<data value="9:m"><b>Portée</b> : 9m</data>
-<data value="V,S,M(une écaille de dragon rouge):components"><b>Composantes</b> : V, S, M (une écaille de dragon rouge)</data>
-<data value="0:s"><b>Durée</b> : instantanée</data>
 
-
-<p>
-A line of roaring flame 30 feet long and 5 feet wide emanates from you in a direction you choose.
-Each creature in the line must make a Dexterity saving throw.
-A creature takes <a is="alt-a" href="/dice/?dice=3d8">3d8</a> fire damage on a failed save, or half as much damage on a successful one.
-
+<p class="description">
+    Une ligne de flammes rugissantes de 9 mètres de long et 1,50 mètre de large émane de vous dans une direction que vous choisissez.
+     Chaque créature dans la trajectoire doit effectuer un jet de sauvegarde de Dextérité,
+     subissant <a is="alt-a" href="/dice/?dice=3d8">3d8</a> dégâts de feu en cas d'échec, ou la moitié de ces dégâts en cas de réussite.
 </p>
-<p>
-    At Higher Levels. When you cast this spell using a spell slot of 3rd level or higher,
-     the damage increases by <a is="alt-a" href="/dice/?dice=1d8">1d8</a> for each slot level above 2nd.
+<p class="augmentation">
+    <b>Aux niveaux supérieurs</b>. 
+    Lorsque vous lancez ce sort en utilisant un emplacement de sort de niveau 3 ou supérieur,
+     les dégâts augmentent de <a is="alt-a" href="/dice/?dice=1d8">1d8</a> pour chaque niveau d'emplacement au-delà du niveau 2.
 </p>
-<form is="alt-form" action="/dice/">
+<form class="augmentation" is="alt-form" action="/dice/">
     <label>cast at level : 
         <select name="dice">
             <option value="3d8">lv2</option>
