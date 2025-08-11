@@ -4,9 +4,11 @@
   "start_url": "/",
   "display": "minimal-ui",
   "icons":
-  {
-    "src": "/icons/livre.png",
-      "sizes": "512x512",
-      "type": "image/png"
-  }
+  [
+    {
+        "src": "/icons/livre.png",
+        "sizes": "512x512",
+        "type": "image/png"
+    }
+  ]
 }
