@@ -1,5 +1,12 @@
 {
   "short_name": "Spellbook",
   "name": "Le livre de sort de no-name",
-  "display": "minimal-ui"
+  "start_url": "/",
+  "display": "minimal-ui",
+  "icons":
+  {
+    "src": "/icons/livre.png",
+      "sizes": "512x512",
+      "type": "image/png"
+  }
 }
