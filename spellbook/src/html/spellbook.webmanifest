@@ -2,12 +2,20 @@
   "short_name": "Spellbook",
   "name": "Le livre de sort de no-name",
   "start_url": "/",
-  "display": "minimal-ui",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#1c1e1f",
+  "theme_color": "#1c1e1f",
   "icons":
   [
     {
         "src": "/icons/livre.png",
         "sizes": "512x512",
+        "type": "image/png"
+    },
+    {
+        "src": "/icons/livre.png",
+        "sizes": "192x192",
         "type": "image/png"
     }
   ]
