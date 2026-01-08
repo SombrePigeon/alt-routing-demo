@@ -17,13 +17,14 @@
       $${importmap.json}
     </script>
     <script type="module" src="/js/main.js"></script>
+    <script async blocking="render" type="module" src="http://alt-routing.dev.releases.sombrepigeon.fr/waitLoad.js"></script>
   </head>
   <body>
-    <header>SpellBook</header>
+    <header><a href="/">SpellBook</a></header>
     <main is="alt-router" data-path="/">
       ${nav.html}
       ${content.html}
     </main>
-    <footer slot="footer">made by : SombrePigeon</footer>
+    <footer slot="footer">made by : <a href="https://github.com/SombrePigeon/">SombrePigeon</a></footer>
   </body>
 </html>

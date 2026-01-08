@@ -3,7 +3,7 @@
     {
       "modules/": "/js/modules/",
       "configs/": "/js/configs/",
-      "alt-routing/": "https://alt-routing.releases.sombrepigeon.fr/1.3.0/",
+      "alt-routing/": "http://alt-routing.dev.releases.sombrepigeon.fr/",
       "alt-routing/config": "/js/configs/alt-routing.js",
       "polyfills/custom-elements": "https://unpkg.com/@ungap/custom-elements"
     }

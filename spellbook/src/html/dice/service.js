@@ -9,6 +9,11 @@ self.addEventListener("fetch", (event) => {
       
       event.respondWith(handleCustomHTMLResponse(dice));
   }
+  if(path == "/dice/nav.html")
+  {
+      const referrer = event.request.referrer;
+      event.respondWith(handleCustomHTMLResponseNav(referrer));
+  }
 
 });
 
@@ -38,4 +43,16 @@ function getRandomIntInclusive(min, max) {
   const minCeiled = Math.ceil(min);
   const maxFloored = Math.floor(max);
   return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
+}
+
+function handleCustomHTMLResponseNav(referrer) {
+
+    let htmlContent = `
+        <nav><a is="alt-a" href="${referrer}" rel="prev">Back</a></nav>
+    `;
+    return new Response(htmlContent, {
+        headers: {
+        'Content-Type': 'text/html; charset=UTF-8'
+        }
+    });
 }

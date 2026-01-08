@@ -11,7 +11,9 @@ alt-route
     {
       border-color: blue;
     }
-    &:state(none)
+    /*
+    &:state(none)*/
+    &:not([data-status="200"])
     {
       display: none;
     }
