@@ -3,15 +3,21 @@
   <head>
     <meta charset="utf-8">
     <title is="alt-title">${title.html}</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 
+    'self' 
+    http://alt-routing.dev.releases.sombrepigeon.fr/ 
+    https://unpkg.com/@ungap/custom-elements
+    'sha256-3e2+vtXtrMQvDrNop3fSQdqeYfxCpDxBl3lYXlxmH8c=' 
+    'sha256-tV4fj1BK6xFM2zre1A7vmXzlHHq1kTmYiElXmAD9cTY=';">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="manifest" href="/spellbook.webmanifest" />
     <style>
       body { background-color: #382933 }
       body>* { visibility: hidden }
     </style>
-    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/style.css"/ blocking="render">
     <noscript>
-      <link rel="stylesheet" href="/css/noScript.css"/>
+      <link rel="stylesheet" href="/css/noScript.css"/ blocking="render">
     </noscript>
     <script type="importmap">
       $${importmap.json}

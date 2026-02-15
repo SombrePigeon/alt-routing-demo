@@ -19,4 +19,5 @@ newConfig.routeur.features.updateTarget = true;
 newConfig.route.shadowRootInit.slotAssignment = "manual";
 newConfig.route.shadowRootInit.mode = "open";
 newConfig.route.navSelector= ":scope>:is(nav,a)"
+newConfig.routeur.features.viewTransition = true;
 export default newConfig;
