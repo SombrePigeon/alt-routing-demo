@@ -1,0 +1,17 @@
+{
+    "models":
+    {
+        "nav.html":
+        {
+            "loading": ["part", "exact"]
+        },
+        "content.html":
+        {
+            "loading": ["exact"]
+        },
+        "routing.html":
+        {
+            "static": true
+        }
+    }
+}

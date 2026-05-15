@@ -1,5 +1,5 @@
-//import "./dice/service.js";
-importScripts('./dice/service.js');
+import "./dice/service.js";
+//importScripts('./dice/service.js');
 
 
 self.addEventListener('install', (event) => {

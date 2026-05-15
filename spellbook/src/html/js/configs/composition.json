@@ -1,0 +1,24 @@
+{
+    "models":
+    {
+        "nav.html":
+        {
+            "static": true
+        },
+        "content.html":
+        {
+            "loading": ["exact"]
+        },
+        "routing.html":
+        {
+            "static": true
+        }
+    },
+    "fragments": 
+    [
+        "nav.html", 
+        "content.html",
+        "routing.html"
+    ],
+    "paramFilter": null
+}

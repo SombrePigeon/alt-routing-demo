@@ -2,9 +2,9 @@
     "imports":
     {
       "modules/": "/js/modules/",
-      "configs/": "/js/configs/",
       "alt-routing/": "http://alt-routing.dev.releases.sombrepigeon.fr/",
-      "alt-routing/config": "/js/configs/alt-routing.js",
+      "alt-routing/config.json": "/js/configs/alt-routing.json",
+      "alt-routing/composition.json": "/js/configs/composition.json",
       "polyfills/custom-elements": "https://unpkg.com/@ungap/custom-elements"
     }
   }
