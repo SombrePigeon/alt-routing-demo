@@ -209,3 +209,9 @@ alt-route[data-path="/"] a.lv2::before
     content: "lv2 : ";
 }
 
+
+
+@view-transition
+{
+    navigation: auto
+}

@@ -2,7 +2,7 @@
     "imports":
     {
       "modules/": "/js/modules/",
-      "alt-routing/": "http://alt-routing.dev.releases.sombrepigeon.fr/",
+      "alt-routing/": "https://alt-routing.releases.sombrepigeon.fr/2.0.0-alpha.6/",
       "alt-routing/config.json": "/js/configs/alt-routing.json",
       "alt-routing/composition.json": "/js/configs/composition.json",
       "polyfills/custom-elements": "https://unpkg.com/@ungap/custom-elements"

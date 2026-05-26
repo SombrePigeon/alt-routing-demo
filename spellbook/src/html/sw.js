@@ -1,18 +1,20 @@
+import {install as installAltRouting} from "https://alt-routing.releases.sombrepigeon.fr/2.0.0-alpha.6/serviceWorker.js";
 import "./dice/service.js";
 //importScripts('./dice/service.js');
 
+//setInterval(_=> {self.registration.update()}, 20000)
+
+installAltRouting();
 
 self.addEventListener('install', (event) => {
   console.log('[SW] Install');
   self.skipWaiting(); // ⚠️ force l'activation sans attendre
 });
-
 self.addEventListener('activate', (event) => {
   console.log('[SW] Activate');
-  self.clients.claim(); // ⚠️ prend le contrôle immédiat des pages ouvertes
+  //self.clients.claim(); // ⚠️ prend le contrôle immédiat des pages ouvertes
 });
 
-//spells
 self.addEventListener("fetch", (event) => {
   // Let the browser do its default thing
   // for non-GET requests.
