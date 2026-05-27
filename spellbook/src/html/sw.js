@@ -1,4 +1,5 @@
-import {install as installAltRouting} from "https://alt-routing.releases.sombrepigeon.fr/2.0.0-alpha.6/serviceWorker.js";
+import {install as installAltRouting} from "https://alt-routing.releases.sombrepigeon.fr/2.0.0-alpha.7/serviceWorker.js";
+//import {install as installAltRouting} from "http://alt-routing.dev.releases.sombrepigeon.fr/serviceWorker.js";
 import "./dice/service.js";
 //importScripts('./dice/service.js');
 
