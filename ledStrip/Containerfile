@@ -1,0 +1,21 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# copier dépendances
+COPY package.json ./
+
+# installer deps (sans package-lock obligatoire)
+RUN npm install --omit=dev
+
+# copier le code
+COPY src/server.js ./server.js
+COPY src/public ./public
+COPY src/data.json ./data.json
+COPY pass.txt ./pass.txt
+
+# exposer port
+EXPOSE 80
+
+# lancer
+CMD ["node", "server.js"]

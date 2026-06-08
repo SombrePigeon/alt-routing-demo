@@ -1,0 +1,18 @@
+services:
+    leds:
+        profiles: [dev, prod]
+        build:
+            context: .
+            dockerfile: Containerfile
+        environment:
+            - VIRTUAL_HOST=leds.alt-routing-demo.sombrepigeon.fr
+            - LETSENCRYPT_HOST=leds.alt-routing-demo.sombrepigeon.fr
+        networks:
+            proxy:
+                aliases: [leds.alt-routing-demo.sombrepigeon.fr]
+        develop:
+            watch:
+                -   
+                    action: sync
+                    path: ./src/
+                    target: /usr/local/apache2/htdocs/
