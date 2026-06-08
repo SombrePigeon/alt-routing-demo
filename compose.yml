@@ -1,6 +1,8 @@
 include:
     - path:
         - index/compose.yml
+    - path:
+        - ledStrip/compose.yml
 
 services:
     alt-routing-framework:
@@ -103,6 +105,42 @@ services:
                 -   
                     action: sync+exec
                     path: ./spellbook/src/
+                    target: /src/
+                    include: 
+                        - "*.html"
+                        - "**/*.html"
+                        - "importmap.json"
+                    ignore: 
+                        - "index.html"
+                        - "**/index.html"
+                    exec: 
+                        command: make -C /src/ -f /alt-routing-framework/makefile
+
+    
+    alt-routing-demo-endo:
+        profiles: [dev, prod, endo]
+        extends: alt-routing-framework
+        build:
+            context: endo
+        environment:
+            - VIRTUAL_HOST=endo.alt-routing-demo.sombrepigeon.fr
+            - LETSENCRYPT_HOST=endo.alt-routing-demo.sombrepigeon.fr
+        networks:
+            proxy:
+                aliases: [endo.alt-routing-demo.sombrepigeon.fr]
+        develop:
+            watch:
+                -   
+                    action: sync
+                    path: ./endo/src/
+                    target: /src/
+                    ignore: 
+                        - "*.html"
+                        - "**/*.html"
+                        - "importmap.json"
+                -   
+                    action: sync+exec
+                    path: ./endo/src/
                     target: /src/
                     include: 
                         - "*.html"
