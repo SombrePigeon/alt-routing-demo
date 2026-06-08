@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Config JSON</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.mode-grid,
+.color-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.color-grid fieldset:last-child:nth-child(odd) {
+    grid-column: 1 / span 2;
+}
+
+fieldset {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+legend {
+    font-weight: bold;
+}
+
+.color-group {
+    display: flex;
+    gap: 10px;
+}
+
+.color-group label {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+input[type="number"] {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+pre {
+    background: #f4f4f4;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Configuration</h1>
+
+<form id="configForm">
+    <fieldset>
+        <legend>Accès</legend>
+        <input type="password" id="password" placeholder="Mot de passe">
+    </fieldset>
+    <h2>Modes</h2>
+    <div id="modeContainer" class="mode-grid"></div>
+    <button type="submit">Submit</button>
+    <h2>Couleurs</h2>
+    <div id="colorContainer" class="color-grid"></div>
+
+    
+</form>
+
+<h2>JSON</h2>
+<pre id="result"></pre>
+
+<script>
+
+let configData = null;
+
+// =========================
+// FETCH INITIAL CONFIG
+// =========================
+async function loadConfig() {
+
+    const res = await fetch("/data.json");
+    configData = await res.json();
+
+    buildForm(configData);
+}
+
+// =========================
+// BUILD FORM
+// =========================
+function buildForm(data) {
+
+    const modeContainer = document.getElementById("modeContainer");
+    const colorContainer = document.getElementById("colorContainer");
+
+    modeContainer.innerHTML = "";
+    colorContainer.innerHTML = "";
+
+    // -------- MODES --------
+    data.mode.forEach((value, index) => {
+
+        const fieldset = document.createElement("fieldset");
+
+        fieldset.innerHTML = `<legend>Mode ${index + 1}</legend>`;
+
+        for (let i = 0; i < 5; i++) {
+
+            const label = document.createElement("label");
+
+            label.innerHTML = `
+                <input type="radio"
+                    name="mode${index}"
+                    value="${i}"
+                    ${i === value ? "checked" : ""}
+                >
+                ${i}
+            `;
+
+            fieldset.appendChild(label);
+        }
+
+        modeContainer.appendChild(fieldset);
+    });
+
+    // -------- COLORS --------
+    Object.entries(data.config).forEach(([name, color]) => {
+
+        const fieldset = document.createElement("fieldset");
+
+        fieldset.innerHTML = `
+            <legend>${name}</legend>
+
+            <div class="color-group">
+
+                <label>
+                    R
+                    <input type="number" min="0" max="255"
+                        id="${name}_r"
+                        value="${color.r}">
+                </label>
+
+                <label>
+                    G
+                    <input type="number" min="0" max="255"
+                        id="${name}_g"
+                        value="${color.g}">
+                </label>
+
+                <label>
+                    B
+                    <input type="number" min="0" max="255"
+                        id="${name}_b"
+                        value="${color.b}">
+                </label>
+
+            </div>
+        `;
+
+        colorContainer.appendChild(fieldset);
+    });
+}
+
+// =========================
+// SUBMIT
+// =========================
+document.getElementById("configForm").addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    const result = {
+        mode: [],
+        config: {}
+    };
+
+    // modes
+    for (let i = 0; i < configData.mode.length; i++) {
+
+        result.mode.push(
+            Number(
+                document.querySelector(`input[name="mode${i}"]:checked`).value
+            )
+        );
+    }
+
+    // colors
+    Object.keys(configData.config).forEach(name => {
+
+        result.config[name] = {
+            r: Number(document.getElementById(`${name}_r`).value),
+            g: Number(document.getElementById(`${name}_g`).value),
+            b: Number(document.getElementById(`${name}_b`).value)
+        };
+    });
+
+    document.getElementById("result").textContent =
+        JSON.stringify(result, null, 4);
+    const password = document.getElementById("password").value;
+    await fetch("data.json", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        "x-password": password
+        },
+        body: JSON.stringify(result)
+    });
+});
+
+// start
+loadConfig();
+
+</script>
+
+</body>
+</html>
