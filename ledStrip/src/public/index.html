@@ -21,7 +21,7 @@ body {
     margin-bottom: 20px;
 }
 
-.color-grid fieldset:last-child:nth-child(odd) {
+ fieldset:first-child {
     grid-column: 1 / span 2;
 }
 
@@ -61,14 +61,12 @@ pre {
 
 <body>
 
-<h1>Configuration</h1>
-
 <form id="configForm">
     <fieldset>
         <legend>Accès</legend>
         <input type="password" id="password" placeholder="Mot de passe">
     </fieldset>
-    <h2>Modes</h2>
+    <h2>Zones</h2>
     <div id="modeContainer" class="mode-grid"></div>
     <button type="submit">Submit</button>
     <h2>Couleurs</h2>
@@ -105,13 +103,15 @@ function buildForm(data) {
 
     modeContainer.innerHTML = "";
     colorContainer.innerHTML = "";
+    const rooms = ["back","1","2","3","4"];
+    const mode = ["back","low","hight","blink","off"];
 
     // -------- MODES --------
     data.mode.forEach((value, index) => {
 
         const fieldset = document.createElement("fieldset");
 
-        fieldset.innerHTML = `<legend>Mode ${index + 1}</legend>`;
+        fieldset.innerHTML = `<legend>${rooms[index]}</legend>`;
 
         for (let i = 0; i < 5; i++) {
 
@@ -123,7 +123,7 @@ function buildForm(data) {
                     value="${i}"
                     ${i === value ? "checked" : ""}
                 >
-                ${i}
+                ${mode[i]}
             `;
 
             fieldset.appendChild(label);
