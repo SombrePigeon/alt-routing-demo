@@ -29,5 +29,26 @@
         {
             "state": true
         }
+    },
+    "button":
+    {
+        "dataAttribute":
+        {
+            "state": true
+        }
+    },
+    "input":
+    {
+        "dataAttribute":
+        {
+            "state": true
+        }
+    },
+    "area":
+    {
+        "dataAttribute":
+        {
+            "state": true
+        }
     }
 }

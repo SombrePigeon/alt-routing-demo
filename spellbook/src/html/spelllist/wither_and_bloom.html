@@ -22,7 +22,7 @@ une créature de votre choix dans cette zone peut dépenser et lancer un de ses 
  les dégâts augmentent de <a is="alt-a" href="/dice/?dice=1d6">1d6</a> pour chaque emplacement au-dessus du 2e, 
  et le nombre de dés de vie qui peuvent être dépensés et ajoutés au lancer de guérison augmente de un pour chaque emplacement au-dessus du 2e.
 </p>
-<form class="augmentation" is="alt-form" action="/dice/">
+<form class="augmentation" is="alt-form"   action="/dice/">
     <label>cast at level : 
         <select name="dice">
             <option value="2d6">lv2</option>
@@ -35,5 +35,9 @@ une créature de votre choix dans cette zone peut dépenser et lancer un de ses 
             <option value="9d6">lv9</option>
         </select>
     </label>
-    <button>cast spell</button>
+    <button>cast spell basic button</button>
+    <input type="submit" value="cast spell basic input">
+    <button is="alt-button" formaction="/dice/">cast spell button</button>
+    <input type="submit" is="alt-input" formaction="/dice/" value="cast spell input">
+    <a is="alt-a" href="/redirect/">redirect test</a>
 </form>
